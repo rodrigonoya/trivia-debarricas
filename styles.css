@@ -52,6 +52,7 @@ button { font: inherit; }
   animation: page-in 700ms ease both;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .intro-view {
@@ -136,6 +137,7 @@ h1 {
 .result.correct { color: var(--green); }
 .result.incorrect { color: var(--red); }
 .action-button { display: block; margin-top: 18px; background: var(--magenta-bright); }
+.next-arrow { display: none; }
 
 .final-view { display: grid; flex: 1; min-height: 0; align-content: center; justify-items: center; padding: 18px 0 0; }
 .final-logo { width: min(55vw, 250px); height: auto; margin-bottom: 26px; animation: logo-in 700ms ease both; }
@@ -205,6 +207,34 @@ h1 {
     line-height: 1.12;
   }
   .result { min-height: 20px; margin: 7px 0 4px; font-size: 17px; }
+
+  .quiz-view.has-answer .options { gap: 3px; }
+  .quiz-view.has-answer .options button { min-height: 35px; padding: 5px 9px; font-size: clamp(13px, 3.8vw, 16px); }
+  .quiz-view.has-answer .result { min-height: 18px; margin: 5px 0 0; font-size: 16px; }
+
+  #next-btn { display: none !important; }
+  .next-arrow:not([hidden]) {
+    position: fixed;
+    right: 10px;
+    top: 50%;
+    z-index: 5;
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    padding: 0 0 3px 2px;
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    background: var(--magenta-bright);
+    color: var(--white);
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    line-height: 1;
+    transform: translateY(-50%);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .35);
+  }
+  .next-arrow:focus-visible { outline: 3px solid var(--white); outline-offset: 3px; }
   .final-logo { width: min(48vw, 180px); margin-bottom: 10px; }
   .final-score { margin-bottom: 6px; font-size: clamp(31px, 10vw, 44px); }
   .final-view h2 { margin-bottom: 8px; font-size: clamp(23px, 7vw, 31px); }
@@ -222,4 +252,6 @@ h1 {
   .options button, .action-button { min-height: 36px; padding: 4px 9px; font-size: clamp(12.5px, 3.5vw, 14px); }
   .options { gap: 4px; }
   .result { margin: 4px 0 2px; font-size: 14px; }
+  .quiz-view.has-answer .options button { min-height: 32px; padding: 3px 8px; font-size: clamp(12px, 3.3vw, 14px); }
+  .quiz-view.has-answer .result { margin-top: 3px; font-size: 14px; }
 }

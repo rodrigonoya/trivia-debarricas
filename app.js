@@ -46,6 +46,8 @@ function renderQuestion() {
   $("#result").textContent = "";
   $("#result").className = "result";
   $("#next-btn").hidden = true;
+  $("#next-arrow").hidden = true;
+  $("#quiz-view").classList.remove("has-answer");
   state.answered = false;
   question.options.forEach((option) => {
     const button = document.createElement("button");
@@ -75,6 +77,8 @@ function checkAnswer(selectedButton, selectedOption) {
   }
   $("#next-btn").textContent = state.config.texts.next;
   $("#next-btn").hidden = false;
+  $("#quiz-view").classList.add("has-answer");
+  $("#next-arrow").hidden = false;
 }
 
 function questionOptionText(button) { return button.textContent; }
@@ -100,6 +104,7 @@ function renderFinal() {
 }
 
 $("#next-btn").addEventListener("click", nextQuestion);
+$("#next-arrow").addEventListener("click", nextQuestion);
 $("#start-btn").addEventListener("click", startQuiz);
 $("#restart-btn").addEventListener("click", showIntro);
 
