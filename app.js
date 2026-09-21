@@ -1,4 +1,4 @@
-const state = { questions: [], config: null, selected: [], current: 0, score: 0, answered: false };
+const state = { questions: [], config: null, selected: [], current: 0, score: 0, answered: false, answerTimer: null };
 const $ = (selector) => document.querySelector(selector);
 
 const shuffle = (items) => {
@@ -19,6 +19,7 @@ async function loadData() {
 }
 
 function startQuiz() {
+  clearTimeout(state.answerTimer);
   state.selected = shuffle(state.questions).slice(0, state.config.questionsPerQuiz).map((question) => ({
     ...question,
     options: shuffle(question.options.map((text, index) => ({ text, correct: index === question.correct })))
@@ -33,6 +34,7 @@ function startQuiz() {
 }
 
 function showIntro() {
+  clearTimeout(state.answerTimer);
   $("#intro-view").hidden = false;
   $("#quiz-view").hidden = true;
   $("#final-view").hidden = true;
@@ -79,12 +81,14 @@ function checkAnswer(selectedButton, selectedOption) {
   $("#next-btn").hidden = false;
   $("#quiz-view").classList.add("has-answer");
   $("#next-arrow").hidden = false;
+  state.answerTimer = setTimeout(nextQuestion, state.config.answerDelayMs ?? 2200);
 }
 
 function questionOptionText(button) { return button.textContent; }
 
 function nextQuestion() {
   if (!state.answered) return;
+  clearTimeout(state.answerTimer);
   if (state.current < state.selected.length - 1) {
     state.current += 1;
     renderQuestion();
