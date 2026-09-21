@@ -1,0 +1,13 @@
+[
+  {"question":"¿Cuál es la variedad de uva más cultivada en la región de Cuyo?","options":["Malbec","Torrontés","Chardonnay","Cabernet Sauvignon"],"correct":0},
+  {"question":"¿De dónde es originaria la uva Malbec?","options":["Italia","España","Francia","Argentina"],"correct":2},
+  {"question":"¿En qué año llegó por primera vez la uva Malbec a la Argentina?","options":["1848","1853","1864","1868"],"correct":1},
+  {"question":"¿Cuáles son los tres destinos donde más se exportan los vinos Malbec argentinos?","options":["China, Canadá y España","Brasil, Alemania y Uruguay","Reino Unido, Paraguay y Rusia","Estados Unidos, Reino Unido y Brasil"],"correct":3},
+  {"question":"¿Qué característica del clima en la región de Cuyo es beneficiosa para la viticultura?","options":["Veranos fríos y lluviosos","Lluvias intensas durante la temporada de crecimiento","Altas temperaturas constantes durante todo el año","Amplias variaciones de temperatura entre el día y la noche"],"correct":3},
+  {"question":"¿Qué bodega de Cuyo fue elegida en 2023 como la mejor del mundo en el prestigioso ranking World's Best Vineyards?","options":["Trapiche","Catena Zapata","Bodega Weinert","Bodegas Salentein"],"correct":1},
+  {"question":"¿El Valle de Uco está comprendido por cuáles de los siguientes departamentos mendocinos?","options":["Tunuyán, San Carlos y Maipú","Tupungato, Maipú y San Rafael","San Carlos, Rivadavia y Lavalle","Tunuyán, Tupungato y San Carlos"],"correct":3},
+  {"question":"¿Cuál es la variedad más cultivada en San Juan?","options":["Syrah","Malbec","Cereza","Flame Seedless"],"correct":2},
+  {"question":"¿Cuántas bodegas abiertas al turismo hay en Mendoza?","options":["Entre 100 y 200","Entre 200 y 300","Entre 300 y 400","Entre 400 y 500"],"correct":1},
+  {"question":"¿Cuál de las siguientes afirmaciones sobre el vino argentino es verdadera?","options":["Mendoza es una de las 12 capitales mundiales del vino","La mayoría de las bodegas en Argentina se encuentran en San Luis","San Juan es la principal provincia productora de vino en Argentina","El vino argentino es conocido principalmente por su variedad de uva Merlot"],"correct":0},
+  {"question":"¿Cómo se llama la tradicional fiesta que se celebra cada año en Mendoza?","options":["La Fiesta de la Uva","La Fiesta de la Vendimia","La Fiesta del Buen Vino","La Fiesta de la Cosecha"],"correct":1}
+]

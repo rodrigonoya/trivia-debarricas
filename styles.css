@@ -1,0 +1,145 @@
+:root {
+  --background: #171717;
+  --magenta: #780047;
+  --magenta-bright: #a40062;
+  --white: #fff;
+  --green: #38bd27;
+  --red: #f05a5a;
+}
+
+* { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--white);
+  font-family: "Lora", serif;
+  overflow-x: hidden;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  color: rgba(120, 0, 71, .18);
+  content: "✦     ✧             ✦       ✧     ✦\A          ✧       ✦         ✧\A  ✧             ✦       ✧             ✦";
+  font-family: Georgia, serif;
+  font-size: clamp(72px, 12vw, 170px);
+  line-height: 1.7;
+  letter-spacing: .12em;
+  white-space: pre;
+  pointer-events: none;
+  transform: rotate(-12deg) scale(1.35);
+  transform-origin: center;
+}
+
+button { font: inherit; }
+
+.quiz-shell {
+  width: min(100% - 48px, 780px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(36px, 7vh, 84px) 0 48px;
+  text-align: center;
+  animation: page-in 700ms ease both;
+}
+
+.intro-view {
+  display: grid;
+  min-height: calc(100vh - 96px);
+  place-content: center;
+  justify-items: center;
+  gap: 28px;
+}
+
+.intro-logo { width: min(70vw, 300px); height: auto; animation: logo-in 900ms ease both; }
+.intro-title, .brand-title { margin: 0; font-family: "Antonio", sans-serif; font-weight: 500; letter-spacing: .18em; }
+.intro-title { font-size: clamp(44px, 7vw, 76px); animation: content-in 650ms 250ms ease both; }
+.intro-view .action-button { width: min(72vw, 300px); animation: content-in 650ms 400ms ease both; }
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(28px, 5vw, 64px);
+}
+
+.brand-logo { width: clamp(148px, 20vw, 208px); height: auto; }
+
+.brand-title { font-size: clamp(42px, 6vw, 76px); line-height: .9; }
+.rule { height: 2px; margin: 34px auto 26px; background: var(--white); width: min(100%, 620px); }
+
+.quiz-view, .final-view { animation: content-in 500ms ease both; }
+
+.progress {
+  min-height: 1.2em;
+  margin: 32px 0 0;
+  color: #c9c9c9;
+  font-size: 15px;
+}
+
+h1 {
+  margin: 20px auto 28px;
+  max-width: 700px;
+  font-family: "Antonio", sans-serif;
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.options { display: grid; gap: 12px; }
+
+.options button, .action-button {
+  width: min(100%, 620px);
+  min-height: 58px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--magenta);
+  color: var(--white);
+  cursor: pointer;
+  font-family: "Lora", serif;
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 700;
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, opacity 180ms ease;
+}
+
+.options button:hover:not(:disabled), .action-button:hover { transform: translateY(-2px); background: var(--magenta-bright); }
+.options button:focus-visible, .action-button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+.options button:disabled { cursor: default; opacity: .72; }
+.options button.is-correct { border-color: var(--green); background: #4f7d2e; opacity: 1; }
+.options button.is-wrong { border-color: var(--red); background: #7e253e; opacity: 1; }
+
+.result { min-height: 28px; margin: 18px 0 12px; font-size: 21px; font-weight: 700; }
+.result.correct { color: var(--green); }
+.result.incorrect { color: var(--red); }
+.action-button { display: block; margin-top: 18px; background: var(--magenta-bright); }
+
+.final-view { display: grid; justify-items: center; padding: 18px 0 0; }
+.final-logo { width: min(55vw, 250px); height: auto; margin-bottom: 26px; animation: logo-in 700ms ease both; }
+.final-score { margin: 4px 0 18px; font-family: "Antonio", sans-serif; font-size: clamp(40px, 5vw, 60px); }
+.final-view h2 { margin: 0 auto 18px; font-family: "Antonio", sans-serif; font-size: clamp(28px, 3.4vw, 42px); font-weight: 500; }
+.final-copy { max-width: 700px; margin: 0 auto; font-size: clamp(18px, 2vw, 23px); line-height: 1.55; }
+.final-copy strong { color: #ffb4df; }
+.final-view .action-button { margin-top: 30px; }
+.load-error { color: var(--red); font-size: 20px; }
+
+[hidden] { display: none !important; }
+
+@keyframes page-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes content-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes logo-in { from { opacity: 0; transform: scale(.82); } to { opacity: 1; transform: scale(1); } }
+
+@media (max-width: 600px) {
+  .quiz-shell { width: min(100% - 28px, 520px); padding-top: 28px; }
+  .brand-header { gap: 22px; }
+  .brand-title { font-size: 42px; }
+  .rule { margin: 30px auto 26px; }
+  .options button, .action-button { min-height: 54px; }
+}

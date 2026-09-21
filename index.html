@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trivia Cuyo – De Barricas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="quiz-shell" aria-live="polite">
+      <section id="intro-view" class="intro-view">
+        <img src="assets/lgo-barricas-web.svg" alt="Guía De Barricas Vinotecas" class="intro-logo" />
+        <h1 class="intro-title">TRIVIA</h1>
+        <button id="start-btn" class="action-button" type="button">Iniciar</button>
+      </section>
+
+      <section id="quiz-view" class="quiz-view">
+        <header class="brand-header">
+          <img src="assets/lgo-barricas-web.svg" alt="Guía De Barricas Vinotecas" class="brand-logo" />
+          <div class="brand-title">TRIVIA</div>
+        </header>
+        <div class="rule" aria-hidden="true"></div>
+        <p id="progress" class="progress"></p>
+        <h1 id="question"></h1>
+        <div id="options" class="options" role="group" aria-label="Opciones de respuesta"></div>
+        <p id="result" class="result" role="status"></p>
+        <button id="next-btn" class="action-button" type="button" hidden>Próxima pregunta</button>
+      </section>
+
+      <section id="final-view" class="final-view" hidden>
+        <img src="assets/lgo-barricas-web.svg" alt="Guía De Barricas Vinotecas" class="final-logo" />
+        <p id="final-score" class="final-score"></p>
+        <h2 id="final-title"></h2>
+        <div id="final-copy" class="final-copy"></div>
+        <button id="restart-btn" class="action-button" type="button">Volver al inicio</button>
+      </section>
+
+      <p id="load-error" class="load-error" hidden>No se pudo cargar la trivia. Revisá los archivos de configuración.</p>
+    </main>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

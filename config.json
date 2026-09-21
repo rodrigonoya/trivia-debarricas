@@ -1,0 +1,16 @@
+{
+  "questionsPerQuiz": 5,
+  "texts": {
+    "correct": "¡Es correcto!",
+    "incorrect": "¡Es incorrecto!",
+    "next": "Próxima pregunta",
+    "restart": "Volver al inicio"
+  },
+  "results": [
+    {"minimumScore":4,"title":"¡Felicitaciones!","message":"Tus conocimientos sobre vinos argentinos merecen un gran beneficio en De Barricas.","discount":"20%"},
+    {"minimumScore":3,"title":"¡Está muy bien!","message":"Todavía podés seguir mejorando tus conocimientos sobre vinos argentinos.","discount":"15%"},
+    {"minimumScore":0,"title":"Podés mejorar","message":"Estás como para mejorar tus conocimientos sobre vinos argentinos.","discount":"10%"}
+  ],
+  "finalInstruction": "Buscá a un vendedor o una vendedora para mostrarle esta pantalla y aprovechar tu beneficio en este local.",
+  "finalThanks": "¡Muchas gracias por participar!"
+}
