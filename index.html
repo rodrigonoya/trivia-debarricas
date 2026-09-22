@@ -23,10 +23,13 @@
           <div class="brand-title">TRIVIA</div>
         </header>
         <div class="rule" aria-hidden="true"></div>
-        <p id="progress" class="progress"></p>
-        <h1 id="question"></h1>
+        <div id="progress-dots" class="progress-dots" aria-label="Progreso de la trivia"></div>
+        <div class="question-stage">
+          <p id="progress" class="progress" aria-hidden="true"></p>
+          <h1 id="question"></h1>
+          <p id="result" class="result" role="status"></p>
+        </div>
         <div id="options" class="options" role="group" aria-label="Opciones de respuesta"></div>
-        <p id="result" class="result" role="status"></p>
         <button id="next-btn" class="action-button" type="button" hidden>Próxima pregunta</button>
       </section>
 

@@ -68,6 +68,10 @@ function showIntro() {
 function renderQuestion() {
   const question = state.selected[state.current];
   $("#progress").textContent = `Pregunta ${state.current + 1} de ${state.selected.length}`;
+  $("#progress-dots").innerHTML = state.selected.map((_, index) => {
+    const status = index < state.current ? "completed" : index === state.current ? "current" : "pending";
+    return `<span class="progress-dot ${status}" aria-label="Pregunta ${index + 1}"></span>`;
+  }).join("");
   $("#question").textContent = question.question;
   $("#options").innerHTML = "";
   $("#result").textContent = "";
@@ -135,7 +139,17 @@ $("#next-btn").addEventListener("click", () => { playDropSound(); nextQuestion()
 $("#start-btn").addEventListener("click", () => { playDropSound(); startQuiz(); });
 $("#restart-btn").addEventListener("click", () => { playDropSound(); showIntro(); });
 
-loadData().then(showIntro).catch((error) => {
+loadData().then(() => {
+  const preview = new URLSearchParams(window.location.search).get("preview");
+  if (preview === "quiz") startQuiz();
+  else if (preview === "answered") {
+    startQuiz();
+    const firstButton = $("#options button");
+    const wrongOption = state.selected[0].options.find((option) => !option.correct) || state.selected[0].options[0];
+    checkAnswer(firstButton, wrongOption);
+  }
+  else showIntro();
+}).catch((error) => {
   console.error(error);
   $("#quiz-view").hidden = true;
   $("#load-error").hidden = false;
