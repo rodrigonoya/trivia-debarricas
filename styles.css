@@ -121,7 +121,7 @@ button { font: inherit; }
 /* Desktop placement follows the reference: a left column beside the answers. */
 @media (min-width: 701px) {
   .progress-dots {
-    left: 23px;
+    left: 20px;
     top: 39%;
     gap: 18px;
     transform: none;
@@ -249,7 +249,7 @@ h1 {
   .brand-logo { width: min(40vw, 132px); }
   .brand-title { font-size: clamp(32px, 10vw, 48px); }
   .rule { margin: 14px auto 9px; }
-  .progress-dots { left: 8px; gap: 8px; }
+  .progress-dots { left: 20px; gap: 8px; }
   .progress-dot { width: 16px; height: 16px; border-width: 1px; }
   .question-stage { min-height: 98px; }
   h1 { font-size: clamp(20px, 5.7vw, 27px); line-height: 1.08; }
@@ -278,7 +278,7 @@ h1 {
   .brand-logo { width: min(35vw, 112px); }
   .brand-title { font-size: clamp(29px, 8.8vw, 40px); }
   .rule { margin: 9px auto 6px; }
-  .progress-dots { left: 6px; gap: 6px; }
+  .progress-dots { left: 20px; gap: 6px; }
   .progress-dot { width: 13px; height: 13px; }
   .question-stage { min-height: 76px; }
   h1 { font-size: clamp(18px, 5.2vw, 23px); }
@@ -296,7 +296,7 @@ h1 {
   .brand-logo { width: min(20vw, 108px); }
   .brand-title { font-size: clamp(30px, 7vw, 40px); }
   .rule { margin: 8px auto 5px; }
-  .progress-dots { left: 10px; gap: 5px; }
+  .progress-dots { left: 20px; gap: 5px; }
   .progress-dot { width: 14px; height: 14px; }
   .question-stage { min-height: 74px; }
   h1 { font-size: clamp(17px, 3.6vw, 23px); line-height: 1.05; }
