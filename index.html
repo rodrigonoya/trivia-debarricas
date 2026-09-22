@@ -6,10 +6,11 @@
     <title>Trivia Cuyo – De Barricas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100..700&family=Lato:wght@400;700;900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <div id="progress-dots" class="progress-dots" aria-label="Progreso de la trivia"></div>
     <main class="quiz-shell" aria-live="polite">
       <section id="intro-view" class="intro-view">
         <img src="assets/lgo-barricas-web.svg" alt="Guía De Barricas Vinotecas" class="intro-logo" />
@@ -23,7 +24,6 @@
           <div class="brand-title">TRIVIA</div>
         </header>
         <div class="rule" aria-hidden="true"></div>
-        <div id="progress-dots" class="progress-dots" aria-label="Progreso de la trivia"></div>
         <div class="question-stage">
           <p id="progress" class="progress" aria-hidden="true"></p>
           <h1 id="question"></h1>
