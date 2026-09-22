@@ -55,6 +55,7 @@ function startQuiz() {
   $("#intro-view").hidden = true;
   $("#quiz-view").hidden = false;
   $("#final-view").hidden = true;
+  $("#progress-dots").hidden = false;
   renderQuestion();
 }
 
@@ -63,6 +64,7 @@ function showIntro() {
   $("#intro-view").hidden = false;
   $("#quiz-view").hidden = true;
   $("#final-view").hidden = true;
+  $("#progress-dots").hidden = true;
 }
 
 function renderQuestion() {
@@ -129,6 +131,7 @@ function renderFinal() {
   const result = [...state.config.results].sort((a, b) => b.minimumScore - a.minimumScore).find((item) => state.score >= item.minimumScore);
   $("#quiz-view").hidden = true;
   $("#final-view").hidden = false;
+  $("#progress-dots").hidden = true;
   $("#final-score").textContent = `Tu puntaje: ${state.score}/${state.selected.length}`;
   $("#final-title").textContent = result.title;
   $("#final-copy").innerHTML = `${result.message}<br><strong>¡Tenés un ${result.discount} de descuento en tu compra para usar ahora!</strong><br>${state.config.finalInstruction}<br>${state.config.finalThanks}`;
@@ -147,6 +150,11 @@ loadData().then(() => {
     const firstButton = $("#options button");
     const wrongOption = state.selected[0].options.find((option) => !option.correct) || state.selected[0].options[0];
     checkAnswer(firstButton, wrongOption);
+  }
+  else if (preview === "final") {
+    startQuiz();
+    state.score = Math.min(3, state.selected.length);
+    renderFinal();
   }
   else showIntro();
 }).catch((error) => {
