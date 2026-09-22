@@ -1,6 +1,6 @@
 {
   "questionsPerQuiz": 5,
-  "answerDelayMs": 2200,
+  "answerDelayMs": 5000,
   "texts": {
     "correct": "¡Es correcto!",
     "incorrect": "¡Es incorrecto!",

@@ -1,5 +1,30 @@
-const state = { questions: [], config: null, selected: [], current: 0, score: 0, answered: false, answerTimer: null };
+const state = { questions: [], config: null, selected: [], current: 0, score: 0, answered: false, answerTimer: null, audioContext: null };
 const $ = (selector) => document.querySelector(selector);
+
+function playDropSound(type = "click") {
+  try {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (!AudioContext) return;
+    state.audioContext ||= new AudioContext();
+    const context = state.audioContext;
+    if (context.state === "suspended") context.resume();
+    const now = context.currentTime;
+    const duration = type === "answer" ? 0.34 : 0.16;
+    const oscillator = context.createOscillator();
+    const gain = context.createGain();
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(type === "answer" ? 900 : 1250, now);
+    oscillator.frequency.exponentialRampToValueAtTime(type === "answer" ? 260 : 430, now + duration);
+    gain.gain.setValueAtTime(0.0001, now);
+    gain.gain.exponentialRampToValueAtTime(type === "answer" ? 0.18 : 0.12, now + 0.008);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+    oscillator.connect(gain).connect(context.destination);
+    oscillator.start(now);
+    oscillator.stop(now + duration + 0.02);
+  } catch {
+    // Audio is decorative; the trivia remains fully functional if unavailable.
+  }
+}
 
 const shuffle = (items) => {
   const result = [...items];
@@ -48,14 +73,13 @@ function renderQuestion() {
   $("#result").textContent = "";
   $("#result").className = "result";
   $("#next-btn").hidden = true;
-  $("#next-arrow").hidden = true;
   $("#quiz-view").classList.remove("has-answer");
   state.answered = false;
   question.options.forEach((option) => {
     const button = document.createElement("button");
     button.type = "button";
     button.textContent = option.text;
-    button.addEventListener("click", () => checkAnswer(button, option));
+    button.addEventListener("click", () => { playDropSound("click"); checkAnswer(button, option); });
     $("#options").append(button);
   });
 }
@@ -63,6 +87,7 @@ function renderQuestion() {
 function checkAnswer(selectedButton, selectedOption) {
   if (state.answered) return;
   state.answered = true;
+  playDropSound("answer");
   const buttons = [...$("#options").querySelectorAll("button")];
   buttons.forEach((button) => { button.disabled = true; });
   const correctButton = buttons.find((button) => questionOptionText(button) && state.selected[state.current].options.find((option) => option.text === questionOptionText(button))?.correct);
@@ -80,7 +105,6 @@ function checkAnswer(selectedButton, selectedOption) {
   $("#next-btn").textContent = state.config.texts.next;
   $("#next-btn").hidden = false;
   $("#quiz-view").classList.add("has-answer");
-  $("#next-arrow").hidden = false;
   state.answerTimer = setTimeout(nextQuestion, state.config.answerDelayMs ?? 2200);
 }
 
@@ -107,10 +131,9 @@ function renderFinal() {
   $("#restart-btn").textContent = state.config.texts.restart;
 }
 
-$("#next-btn").addEventListener("click", nextQuestion);
-$("#next-arrow").addEventListener("click", nextQuestion);
-$("#start-btn").addEventListener("click", startQuiz);
-$("#restart-btn").addEventListener("click", showIntro);
+$("#next-btn").addEventListener("click", () => { playDropSound(); nextQuestion(); });
+$("#start-btn").addEventListener("click", () => { playDropSound(); startQuiz(); });
+$("#restart-btn").addEventListener("click", () => { playDropSound(); showIntro(); });
 
 loadData().then(showIntro).catch((error) => {
   console.error(error);
