@@ -20,8 +20,9 @@
 
       <section id="quiz-view" class="quiz-view">
         <header class="brand-header">
-          <img src="assets/lgo-barricas-web.svg" alt="Guía De Barricas Vinotecas" class="brand-logo" />
-          <div class="brand-title">TRIVIA</div>
+          <button id="reset-btn" class="logo-reset" type="button" aria-label="Volver al inicio">
+            <img src="assets/lgo-barricas-web.svg" alt="Guía De Barricas Vinotecas" class="brand-logo" />
+          </button>
         </header>
         <div class="rule" aria-hidden="true"></div>
         <div class="question-stage">
@@ -34,7 +35,9 @@
       </section>
 
       <section id="final-view" class="final-view" hidden>
-        <img src="assets/lgo-barricas-web.svg" alt="Guía De Barricas Vinotecas" class="final-logo" />
+        <button id="final-logo-btn" class="logo-reset" type="button" aria-label="Volver al inicio">
+          <img src="assets/lgo-barricas-web.svg" alt="Guía De Barricas Vinotecas" class="final-logo" />
+        </button>
         <p id="final-score" class="final-score"></p>
         <h2 id="final-title"></h2>
         <div id="final-copy" class="final-copy"></div>

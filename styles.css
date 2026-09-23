@@ -77,6 +77,26 @@ button { font: inherit; }
   gap: clamp(28px, 5vw, 64px);
 }
 
+.logo-reset {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.logo-reset:focus-visible {
+  outline: 3px solid var(--white);
+  outline-offset: 8px;
+  border-radius: 6px;
+}
+
+.logo-reset:hover .brand-logo,
+.logo-reset:hover .final-logo { opacity: .86; }
+
 .brand-logo { width: clamp(148px, 20vw, 208px); height: auto; }
 
 .brand-title { font-size: clamp(42px, 6vw, 76px); line-height: .9; }

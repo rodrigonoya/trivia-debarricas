@@ -141,6 +141,8 @@ function renderFinal() {
 $("#next-btn").addEventListener("click", () => { playDropSound(); nextQuestion(); });
 $("#start-btn").addEventListener("click", () => { playDropSound(); startQuiz(); });
 $("#restart-btn").addEventListener("click", () => { playDropSound(); showIntro(); });
+$("#reset-btn").addEventListener("click", () => { playDropSound(); showIntro(); });
+$("#final-logo-btn").addEventListener("click", () => { playDropSound(); showIntro(); });
 
 loadData().then(() => {
   const preview = new URLSearchParams(window.location.search).get("preview");
