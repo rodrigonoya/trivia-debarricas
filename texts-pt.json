@@ -1,0 +1,16 @@
+{
+  "languageName": "Português",
+  "start": "Iniciar",
+  "correct": "Correto!",
+  "incorrect": "Incorreto!",
+  "next": "Próxima pergunta",
+  "restart": "Voltar ao início",
+  "score": "Sua pontuação",
+  "finalInstruction": "Mostre esta tela a um membro da equipe para usar seu benefício na loja.",
+  "finalThanks": "Muito obrigado por participar!",
+  "results": [
+    {"minimumScore":4,"title":"Parabéns!","message":"Você é um sommelier sem diploma.","discountText":"Você ganhou 25% de desconto em produtos nacionais e 15% em produtos importados para usar agora na loja."},
+    {"minimumScore":2,"title":"Muito bem!","message":"Dá para ver que você entende de vinhos.","discountText":"Para continuar apurando o paladar, você ganha 15% de desconto para usar agora na loja."},
+    {"minimumScore":0,"title":"Opa!","message":"O quiz estava difícil, mas sabemos que você tem bom gosto para escolher vinhos.","discountText":"Por isso, você ganha 10% de desconto para usar agora na loja."}
+  ]
+}

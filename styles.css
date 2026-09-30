@@ -138,6 +138,96 @@ button { font: inherit; }
 .progress-dot.completed { background: var(--magenta-bright); box-shadow: 0 0 10px rgba(164, 0, 98, .55); }
 .progress-dot.current { transform: scale(1.08); box-shadow: 0 0 12px rgba(255, 255, 255, .18); }
 
+.language-switcher {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transform: translateY(-50%);
+}
+
+.language-dot {
+  position: relative;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  place-items: center;
+  border: 2px solid var(--magenta-bright);
+  border-radius: 50%;
+  background: transparent;
+  overflow: hidden;
+  font-size: 19px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.language-dot:hover,
+.language-dot.selected { box-shadow: 0 0 10px rgba(164, 0, 98, .75); transform: scale(1.08); }
+.language-dot:focus-visible { outline: 3px solid var(--white); outline-offset: 4px; }
+
+.flag {
+  position: relative;
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.flag-ar {
+  background: linear-gradient(to bottom, #75bfe9 0 33%, #fff 33% 66%, #75bfe9 66% 100%);
+}
+.flag-ar::after {
+  position: absolute;
+  inset: 5px 9px;
+  border-radius: 50%;
+  background: #f4c542;
+  content: "";
+}
+.flag-us {
+  background: repeating-linear-gradient(to bottom, #c9273b 0 2px, #fff 2px 4px);
+}
+.flag-us::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 8px;
+  background: #244a86;
+  content: "";
+}
+.flag-br {
+  background: #229447;
+}
+.flag-br::before {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 13px;
+  height: 11px;
+  background: #f2c744;
+  content: "";
+  transform: rotate(45deg);
+}
+.flag-br::after {
+  position: absolute;
+  top: 4px;
+  left: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2455a4;
+  content: "";
+}
+
 /* Desktop placement follows the reference: a left column beside the answers. */
 @media (min-width: 701px) {
   .progress-dots {
@@ -273,6 +363,8 @@ h1 {
   .rule { margin: 14px auto 9px; }
   .progress-dots { left: 20px; gap: 8px; }
   .progress-dot { width: 16px; height: 16px; border-width: 1px; }
+  .language-switcher { right: 20px; gap: 8px; }
+  .language-dot { width: 25px; height: 25px; border-width: 1px; font-size: 14px; }
   .question-stage { min-height: 98px; }
   h1 { font-size: clamp(20px, 5.7vw, 27px); line-height: 1.08; }
   .options { gap: 5px; }
@@ -302,6 +394,8 @@ h1 {
   .rule { margin: 9px auto 6px; }
   .progress-dots { left: 20px; gap: 6px; }
   .progress-dot { width: 13px; height: 13px; }
+  .language-switcher { right: 20px; gap: 6px; }
+  .language-dot { width: 21px; height: 21px; font-size: 12px; }
   .question-stage { min-height: 76px; }
   h1 { font-size: clamp(18px, 5.2vw, 23px); }
   .options button, .action-button { min-height: 36px; padding: 4px 9px; font-size: clamp(12.5px, 3.5vw, 14px); }
@@ -320,6 +414,8 @@ h1 {
   .rule { margin: 8px auto 5px; }
   .progress-dots { left: 20px; gap: 5px; }
   .progress-dot { width: 14px; height: 14px; }
+  .language-switcher { right: 20px; gap: 5px; }
+  .language-dot { width: 22px; height: 22px; font-size: 12px; }
   .question-stage { min-height: 74px; }
   h1 { font-size: clamp(17px, 3.6vw, 23px); line-height: 1.05; }
   .options { gap: 3px; }

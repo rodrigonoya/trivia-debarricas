@@ -1,4 +1,4 @@
-const state = { questions: [], config: null, selected: [], current: 0, score: 0, answered: false, answerTimer: null, audioContext: null };
+const state = { questions: [], texts: null, config: null, language: "es", selected: [], current: 0, score: 0, answered: false, answerTimer: null, audioContext: null };
 const $ = (selector) => document.querySelector(selector);
 
 function playDropSound(type = "click") {
@@ -36,10 +36,26 @@ const shuffle = (items) => {
 };
 
 async function loadData() {
-  const [questionsResponse, configResponse] = await Promise.all([fetch("questions.json"), fetch("config.json")]);
-  if (!questionsResponse.ok || !configResponse.ok) throw new Error("No se pudieron cargar los datos");
-  state.questions = await questionsResponse.json();
+  const configResponse = await fetch("config.json");
+  if (!configResponse.ok) throw new Error("No se pudo cargar la configuración");
   state.config = await configResponse.json();
+  await loadLanguage("es");
+}
+
+async function loadLanguage(language) {
+  const questionFile = language === "es" ? "questions.json" : `questions-${language}.json`;
+  const [questionsResponse, textsResponse] = await Promise.all([fetch(questionFile), fetch(`texts-${language}.json`)]);
+  if (!questionsResponse.ok || !textsResponse.ok) throw new Error(`No se pudieron cargar los datos del idioma ${language}`);
+  state.questions = await questionsResponse.json();
+  state.texts = await textsResponse.json();
+  state.language = language;
+  document.documentElement.lang = language;
+  $("#start-btn").textContent = state.texts.start;
+  $("#next-btn").textContent = state.texts.next;
+  $("#restart-btn").textContent = state.texts.restart;
+  $("#language-switcher").querySelectorAll(".language-dot").forEach((button) => {
+    button.classList.toggle("selected", button.dataset.language === language);
+  });
   if (state.questions.length < state.config.questionsPerQuiz) throw new Error("No hay suficientes preguntas");
 }
 
@@ -100,15 +116,15 @@ function checkAnswer(selectedButton, selectedOption) {
   if (selectedOption.correct) {
     state.score += 1;
     selectedButton.classList.add("is-correct");
-    $("#result").textContent = state.config.texts.correct;
+    $("#result").textContent = state.texts.correct;
     $("#result").className = "result correct";
   } else {
     selectedButton.classList.add("is-wrong");
     if (correctButton) correctButton.classList.add("is-correct");
-    $("#result").textContent = state.config.texts.incorrect;
+    $("#result").textContent = state.texts.incorrect;
     $("#result").className = "result incorrect";
   }
-  $("#next-btn").textContent = state.config.texts.next;
+  $("#next-btn").textContent = state.texts.next;
   $("#next-btn").hidden = false;
   $("#quiz-view").classList.add("has-answer");
   state.answerTimer = setTimeout(nextQuestion, state.config.answerDelayMs ?? 2200);
@@ -128,14 +144,14 @@ function nextQuestion() {
 }
 
 function renderFinal() {
-  const result = [...state.config.results].sort((a, b) => b.minimumScore - a.minimumScore).find((item) => state.score >= item.minimumScore);
+  const result = [...state.texts.results].sort((a, b) => b.minimumScore - a.minimumScore).find((item) => state.score >= item.minimumScore);
   $("#quiz-view").hidden = true;
   $("#final-view").hidden = false;
   $("#progress-dots").hidden = true;
-  $("#final-score").textContent = `Tu puntaje: ${state.score}/${state.selected.length}`;
+  $("#final-score").textContent = `${state.texts.score}: ${state.score}/${state.selected.length}`;
   $("#final-title").textContent = result.title;
-  $("#final-copy").innerHTML = `${result.message}<br><strong>¡Tenés un ${result.discount} de descuento en tu compra para usar ahora!</strong><br>${state.config.finalInstruction}<br>${state.config.finalThanks}`;
-  $("#restart-btn").textContent = state.config.texts.restart;
+  $("#final-copy").innerHTML = `${result.message}<br><strong>${result.discountText}</strong><br>${state.texts.finalInstruction}<br>${state.texts.finalThanks}`;
+  $("#restart-btn").textContent = state.texts.restart;
 }
 
 $("#next-btn").addEventListener("click", () => { playDropSound(); nextQuestion(); });
@@ -143,6 +159,18 @@ $("#start-btn").addEventListener("click", () => { playDropSound(); startQuiz(); 
 $("#restart-btn").addEventListener("click", () => { playDropSound(); showIntro(); });
 $("#reset-btn").addEventListener("click", () => { playDropSound(); showIntro(); });
 $("#final-logo-btn").addEventListener("click", () => { playDropSound(); showIntro(); });
+$("#language-switcher").querySelectorAll(".language-dot").forEach((button) => {
+  button.addEventListener("click", async () => {
+    playDropSound();
+    try {
+      await loadLanguage(button.dataset.language);
+      showIntro();
+    } catch (error) {
+      console.error(error);
+      $("#load-error").hidden = false;
+    }
+  });
+});
 
 loadData().then(() => {
   const preview = new URLSearchParams(window.location.search).get("preview");

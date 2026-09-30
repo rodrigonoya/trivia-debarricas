@@ -1,0 +1,16 @@
+{
+  "languageName": "English",
+  "start": "Start",
+  "correct": "Correct!",
+  "incorrect": "Incorrect!",
+  "next": "Next question",
+  "restart": "Back to start",
+  "score": "Your score",
+  "finalInstruction": "Show this screen to a member of staff to use your benefit in the shop.",
+  "finalThanks": "Thank you for participating!",
+  "results": [
+    {"minimumScore":4,"title":"Congratulations!","message":"You’re a sommelier without the paperwork.","discountText":"You’ve earned 25% off domestic products and 15% off international products to use in the shop right now."},
+    {"minimumScore":2,"title":"Well done!","message":"You clearly know your wines.","discountText":"To keep refining your palate, here’s 15% off to use in the shop right now."},
+    {"minimumScore":0,"title":"Oops!","message":"That was a tough quiz, but we know you’ve got great taste in wine.","discountText":"So here’s 10% off to use in the shop right now."}
+  ]
+}

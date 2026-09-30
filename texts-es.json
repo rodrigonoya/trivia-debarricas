@@ -1,0 +1,16 @@
+{
+  "languageName": "Español",
+  "start": "Iniciar",
+  "correct": "¡Es correcto!",
+  "incorrect": "¡Es incorrecto!",
+  "next": "Próxima pregunta",
+  "restart": "Volver al inicio",
+  "score": "Tu puntaje",
+  "finalInstruction": "Buscá a un vendedor o una vendedora para mostrarle esta pantalla y aprovechar tu beneficio en este local.",
+  "finalThanks": "¡Muchas gracias por participar!",
+  "results": [
+    {"minimumScore":4,"title":"¡Felicitaciones!","message":"Sos un sommelier sin papeles.","discountText":"Te ganaste 25% en productos nacionales y 15% en internacionales para usar ahora en el local."},
+    {"minimumScore":2,"title":"¡Muy bien!","message":"Se nota que sabés de vinos.","discountText":"Para seguir perfeccionando el paladar, te damos 15% de descuento para usar ahora en el local."},
+    {"minimumScore":0,"title":"¡Ups!","message":"La trivia estuvo difícil, pero sabemos que tenés buen gusto para elegir vinos.","discountText":"Por eso, te damos 10% de descuento para usar ahora en el local."}
+  ]
+}
