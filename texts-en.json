@@ -6,7 +6,7 @@
   "next": "Next question",
   "restart": "Back to start",
   "score": "Your score",
-  "finalInstruction": "Show this screen to a member of staff to use your benefit in the shop.",
+  "finalInstruction": "",
   "finalThanks": "Thank you for participating!",
   "results": [
     {"minimumScore":4,"title":"Congratulations!","message":"You’re a sommelier without the paperwork.","discountText":"You’ve earned 25% off domestic products and 15% off international products to use in the shop right now."},
