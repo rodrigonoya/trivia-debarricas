@@ -6,7 +6,7 @@
   "next": "Próxima pregunta",
   "restart": "Volver al inicio",
   "score": "Tu puntaje",
-  "finalInstruction": "Buscá a un vendedor o una vendedora para mostrarle esta pantalla y aprovechar tu beneficio en este local.",
+  "finalInstruction": "",
   "finalThanks": "¡Muchas gracias por participar!",
   "results": [
     {"minimumScore":4,"title":"¡Felicitaciones!","message":"Sos un sommelier sin papeles.","discountText":"Te ganaste 25% en productos nacionales y 15% en internacionales para usar ahora en el local."},
