@@ -150,7 +150,15 @@ function renderFinal() {
   $("#progress-dots").hidden = true;
   $("#final-score").textContent = `${state.texts.score}: ${state.score}/${state.selected.length}`;
   $("#final-title").textContent = result.title;
-  $("#final-copy").innerHTML = `${result.message}<br><strong>${result.discountText}</strong><br>${state.texts.finalInstruction}<br>${state.texts.finalThanks}`;
+  const instruction = state.texts.finalInstruction
+  ? `<br>${state.texts.finalInstruction}`
+  : "";
+
+$("#final-copy").innerHTML =
+  `${result.message}<br>` +
+  `<strong>${result.discountText}</strong>` +
+  `${instruction}<br>` +
+  `${state.texts.finalThanks}`;
   $("#restart-btn").textContent = state.texts.restart;
 }
 
