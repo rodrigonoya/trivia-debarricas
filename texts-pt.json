@@ -6,7 +6,7 @@
   "next": "Próxima pergunta",
   "restart": "Voltar ao início",
   "score": "Sua pontuação",
-  "finalInstruction": "Mostre esta tela a um membro da equipe para usar seu benefício na loja.",
+  "finalInstruction": "",
   "finalThanks": "Muito obrigado por participar!",
   "results": [
     {"minimumScore":4,"title":"Parabéns!","message":"Você é um sommelier sem diploma.","discountText":"Você ganhou 25% de desconto em produtos nacionais e 15% em produtos importados para usar agora na loja."},
