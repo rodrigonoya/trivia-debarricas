@@ -187,10 +187,14 @@ button { font: inherit; }
 }
 .flag-ar::after {
   position: absolute;
-  inset: 5px 9px;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #f4c542;
   content: "";
+  transform: translate(-50%, -50%);
 }
 .flag-us {
   background: repeating-linear-gradient(to bottom, #c9273b 0 2px, #fff 2px 4px);
@@ -199,8 +203,8 @@ button { font: inherit; }
   position: absolute;
   top: 0;
   left: 0;
-  width: 10px;
-  height: 8px;
+  width: 45%;
+  height: 45%;
   background: #244a86;
   content: "";
 }
@@ -209,23 +213,25 @@ button { font: inherit; }
 }
 .flag-br::before {
   position: absolute;
-  top: 2px;
-  left: 5px;
-  width: 13px;
-  height: 11px;
+  top: 50%;
+  left: 50%;
+  width: 58%;
+  height: 58%;
   background: #f2c744;
   content: "";
-  transform: rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
 }
+
 .flag-br::after {
   position: absolute;
-  top: 4px;
-  left: 9px;
-  width: 7px;
-  height: 7px;
+  top: 50%;
+  left: 50%;
+  width: 25%;
+  height: 25%;
   border-radius: 50%;
   background: #2455a4;
   content: "";
+  transform: translate(-50%, -50%);
 }
 
 /* Desktop placement follows the reference: a left column beside the answers. */
